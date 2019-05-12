@@ -42,6 +42,7 @@
 #include "importscraper.h"
 #include "arcadedb.h"
 #include "esgamelist.h"
+#include "emumovies.h"
 
 ScraperWorker::ScraperWorker(QSharedPointer<Queue> queue, QSharedPointer<Cache> cache,
 			     Settings config, QString threadId)
@@ -74,6 +75,8 @@ void ScraperWorker::run()
     scraper = new WorldOfSpectrum(&config);
   } else if(config.scraper == "esgamelist") {
     scraper = new ESGameList(&config);
+  } else if(config.scraper == "emumovies") {
+    scraper = new EmuMovies(&config);
   } else if(config.scraper == "cache") {
     scraper = new LocalScraper(&config);
   } else if(config.scraper == "import") {
