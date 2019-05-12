@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = Skyscraper
+TARGET = Skyscraper-dev
 DEPENDPATH += .
 INCLUDEPATH += .
 CONFIG += release
@@ -8,18 +8,18 @@ QT += core network xml
 QMAKE_CXXFLAGS += -std=c++11
 
 unix:target.path=/usr/local/bin
-unix:target.files=Skyscraper Skyscraper.app/Contents/MacOS/Skyscraper
+unix:target.files=Skyscraper-dev Skyscraper-dev.app/Contents/MacOS/Skyscraper-dev
 
-unix:examples.path=/usr/local/etc/skyscraper
+unix:examples.path=/usr/local/etc/skyscraper-dev
 unix:examples.files=config.ini.example README.md hints.txt artwork.xml artwork.xml.example1 artwork.xml.example2 artwork.xml.example3 artwork.xml.example4 aliasMap.csv mameMap.csv docs/ARTWORK.md tgdb_developers.json tgdb_publishers.json
 
-unix:cacheexamples.path=/usr/local/etc/skyscraper/cache
+unix:cacheexamples.path=/usr/local/etc/skyscraper-dev/cache
 unix:cacheexamples.files=cache/priorities.xml.example docs/CACHE.md
 
-unix:impexamples.path=/usr/local/etc/skyscraper/import
+unix:impexamples.path=/usr/local/etc/skyscraper-dev/import
 unix:impexamples.files=docs/IMPORT.md import/definitions.dat.example1 import/definitions.dat.example2
 
-unix:resexamples.path=/usr/local/etc/skyscraper/resources
+unix:resexamples.path=/usr/local/etc/skyscraper-dev/resources
 unix:resexamples.files=resources/maskexample.png resources/frameexample.png resources/boxfront.png resources/boxside.png resources/scanlines1.png resources/scanlines2.png
 
 unix:INSTALLS += target examples cacheexamples impexamples resexamples
@@ -48,6 +48,7 @@ HEADERS += src/skyscraper.h \
            src/thegamesdb.h \
            src/worldofspectrum.h \
            src/screenscraper.h \
+           src/emumovies.h \
            src/crc32.h \
            src/mobygames.h \
            src/igdb.h \
@@ -95,6 +96,7 @@ SOURCES += src/main.cpp \
            src/thegamesdb.cpp \
            src/worldofspectrum.cpp \
            src/screenscraper.cpp \
+           src/emumovies.cpp \
            src/crc32.cpp \
            src/mobygames.cpp \
            src/igdb.cpp \
