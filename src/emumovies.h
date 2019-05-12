@@ -55,7 +55,8 @@ private:
   void getVideo(GameEntry &game) override;
 
   QString getPlatformId(const QString platform);
-  QString getMediaUrl(QString mediaType);
+  QString getMediaUrl(GameEntry &game, QString mediaType);
+  void login();
   
   QString session;
   QDomDocument xmlDoc;  

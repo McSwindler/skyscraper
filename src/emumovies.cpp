@@ -104,13 +104,13 @@ void EmuMovies::getGameData(GameEntry &game)
   }
 }
 
-QString EmuMovies::getMediaUrl(QString mediaType)
+QString EmuMovies::getMediaUrl(GameEntry &game, QString mediaType)
 {
   QString platformId = getPlatformId(config->platform);
   QString searchUrl = baseUrl + "/searchbulk.aspx?system=" + platformId + "&media=" + mediaType + "&sessionid=" + session;
   QString postData = "FileNames=" + game.title;
 
-  manager.requst(searchUrl, postData);
+  manager.request(searchUrl, postData);
   q.exec();
   data = manager.getData();
 
@@ -129,7 +129,7 @@ QString EmuMovies::getMediaUrl(QString mediaType)
 
 void EmuMovies::getCover(GameEntry &game)
 {
-  QString url = getMediaUrl("Box");
+  QString url = getMediaUrl(game, "Box");
   if(!url.isEmpty()) {
     manager.request(url);
     q.exec();
@@ -142,7 +142,7 @@ void EmuMovies::getCover(GameEntry &game)
 
 void EmuMovies::getScreenshot(GameEntry &game)
 {
-  QString url = getMediaUrl("Snap");
+  QString url = getMediaUrl(game, "Snap");
   if(!url.isEmpty()) {
     manager.request(url);
     q.exec();
@@ -155,7 +155,7 @@ void EmuMovies::getScreenshot(GameEntry &game)
 
 void EmuMovies::getWheel(GameEntry &game)
 {
-  QString url = getMediaUrl("Logos");
+  QString url = getMediaUrl(game, "Logos");
   if(!url.isEmpty()) {
     manager.request(url);
     q.exec();
@@ -168,7 +168,7 @@ void EmuMovies::getWheel(GameEntry &game)
 
 void EmuMovies::getMarquee(GameEntry &game)
 {
-  QString url = getMediaUrl("Banner");
+  QString url = getMediaUrl(game, "Banner");
   if(!url.isEmpty()) {
     manager.request(url);
     q.exec();
@@ -181,7 +181,7 @@ void EmuMovies::getMarquee(GameEntry &game)
 
 void EmuMovies::getVideo(GameEntry &game)
 {
-  QString url = getMediaUrl("Video_MP4_HI_QUAL");
+  QString url = getMediaUrl(game, "Video_MP4_HI_QUAL");
   if(!url.isEmpty()) {
     manager.request(url);
     q.exec();
@@ -198,7 +198,7 @@ void EmuMovies::getVideo(GameEntry &game)
 QList<QString> EmuMovies::getSearchNames(const QFileInfo &info)
 {
   QList<QString> searchNames;
-  searchNames.append(QUrl::toPercentEncoding(info.fileName())));
+  searchNames.append(QUrl::toPercentEncoding(info.fileName()));
 
   return searchNames;
 }
