@@ -108,7 +108,7 @@ QString EmuMovies::getMediaUrl(GameEntry &game, QString mediaType)
 {
   QString platformId = getPlatformId(config->platform);
   QString searchUrl = baseUrl + "/searchbulk.aspx?system=" + platformId + "&media=" + mediaType + "&sessionid=" + session;
-  QString postData = "FileNames=" + game.title;
+  QString postData = "FileNames=" + QUrl::toPercentEncoding(game.title);
 
   manager.request(searchUrl, postData);
   q.exec();
@@ -195,10 +195,15 @@ void EmuMovies::getVideo(GameEntry &game)
   }
 }
 
+QString EmuMovies::getCompareTitle(QFileInfo info)
+{
+  return info.fileName();
+}
+
 QList<QString> EmuMovies::getSearchNames(const QFileInfo &info)
 {
   QList<QString> searchNames;
-  searchNames.append(QUrl::toPercentEncoding(info.fileName()));
+  searchNames.append(info.fileName());
 
   return searchNames;
 }

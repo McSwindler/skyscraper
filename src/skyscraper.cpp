@@ -927,6 +927,7 @@ void Skyscraper::loadConfig(const QCommandLineParser &parser)
 			   parser.value("s") == "mobygames" ||
 			   parser.value("s") == "screenscraper" ||
 			   parser.value("s") == "esgamelist" ||
+         parser.value("s") == "emumovies" ||
 			   parser.value("s") == "cache" ||
 			   parser.value("s") == "import")) {
     config.scraper = parser.value("s");
