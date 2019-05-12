@@ -72,7 +72,6 @@ void EmuMovies::getSearchResults(QList<GameEntry> &gameEntries,
 
   GameEntry game;
   game.title = searchName;
-  game.platform = platformId;
 
   gameEntries.append(game);
 }
