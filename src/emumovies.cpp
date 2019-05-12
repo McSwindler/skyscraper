@@ -71,6 +71,7 @@ void EmuMovies::getSearchResults(QList<GameEntry> &gameEntries,
   }
 
   GameEntry game;
+  game.title = searchName;
 
   gameEntries.append(game);
 }
@@ -100,6 +101,8 @@ void EmuMovies::getGameData(GameEntry &game)
       ;
     }
   }
+
+  game.title = "";
 }
 
 QString EmuMovies::getMediaUrl(GameEntry &game, QString mediaType)
