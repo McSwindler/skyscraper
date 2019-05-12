@@ -71,7 +71,6 @@ void EmuMovies::getSearchResults(QList<GameEntry> &gameEntries,
   }
 
   GameEntry game;
-  game.title = searchName;
 
   gameEntries.append(game);
 }

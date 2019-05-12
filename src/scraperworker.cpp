@@ -380,7 +380,7 @@ GameEntry ScraperWorker::getBestEntry(const QList<GameEntry> &gameEntries,
   // If scraper isn't filename search based, always return first entry
   if(config.scraper == "cache" || config.scraper == "import" ||
      config.scraper == "arcadedb" || config.scraper == "screenscraper" ||
-     config.scraper == "esgamelist" ||
+     config.scraper == "esgamelist" || config.scraper == "emumovies" ||
      (config.scraper == "openretro" && gameEntries.first().url.isEmpty())) {
     lowestDistance = 0;
     game = gameEntries.first();
